@@ -1,0 +1,83 @@
+.error {
+  border: 2px solid $color-danger;
+}
+
+.shake {
+  animation: shake 140ms linear 0s;
+}
+
+.alert {
+  padding: 8px;
+  border: 1px solid $color-dark;
+  border-radius: 4px;
+  margin-top: 18px;
+  margin-bottom: 13px;
+
+  color: $color-dark-1;
+  width: 100%;
+  font-size: 13px;
+
+  &.alert-danger {
+    color: $color-danger;
+    border-color: $color-grey-3;
+    background: $color-grey-3;
+  }
+
+  &.alert-success {
+    color: $color-success;
+    border-color: $color-grey-4;
+    background: $color-grey-4;
+  }
+}
+
+@mixin icon($top, $right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  transform: translateY(-$top);
+
+  outline: none;
+  border: none;
+  color: $color-dark;
+  cursor: pointer;
+  font-size: 24px;
+  background-color: transparent;
+  transition: color 250ms linear 0ms;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px 0;
+  font-size: 1rem;
+  letter-spacing: 0.25px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: blue;
+  transition: background-color 250ms ease-in 10ms;
+}
+
+.block-btn {
+  @extend .btn;
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-top: 20px;
+  padding: 15px 15px;
+  background-color: red;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(4%);
+  }
+  50% {
+    transform: translateX(-8%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

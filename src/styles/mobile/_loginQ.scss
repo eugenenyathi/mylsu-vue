@@ -1,0 +1,113 @@
+@media (max-width: 840px) {
+  .signin-container {
+    width: 380px;
+    padding: 25px;
+
+    .logo {
+      margin: 18px 0 18px 0px;
+
+      img {
+        width: 250px;
+      }
+    }
+  }
+
+  .form-control {
+    margin-bottom: 18px;
+
+    .signin-input {
+      font-size: 16px;
+      letter-spacing: 0.4px;
+      height: 48px;
+      padding: 0px 10px;
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    .eye-icon {
+      font-size: 20px;
+    }
+  }
+
+  .forgot-password {
+    font-size: 15px;
+    letter-spacing: 0.4px;
+  }
+
+  .login-btn {
+    margin-top: 14px;
+    height: 50px;
+    padding: 0px 13px;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+  }
+
+  .footer {
+    margin-top: 38px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 440px) {
+  body {
+    display: block;
+    background-color: $color-white;
+  }
+
+  .signin-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 18px;
+
+    .logo {
+      margin-bottom: 25px;
+
+      img {
+        width: 245px;
+      }
+    }
+  }
+
+  .form-control {
+    .signin-input {
+      height: 46px;
+      padding: 0px 11px;
+      border-color: $color-grey-7;
+      border-radius: 6px;
+      background-color: $color-grey-7;
+      transition: $transition;
+
+      &:focus {
+        border-color: $grey-eee;
+      }
+    }
+
+    .eye-icon {
+      font-size: 18px;
+    }
+  }
+
+  .forgot-password {
+    font-size: 15px;
+  }
+
+  .login-btn {
+    margin-top: 18px;
+    height: 48px;
+    padding: 0px 11px;
+  }
+
+  .footer {
+    display: none;
+  }
+}

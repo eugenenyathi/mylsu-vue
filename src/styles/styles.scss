@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import "./global/config";
+@import "./global/utils";
+
+@import "./desktop/index";
+@import "./mobile/index";
