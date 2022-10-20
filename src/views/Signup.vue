@@ -1,7 +1,7 @@
 <template>
 	<div class="signup-container">
 		<PersonalInfo v-if="!page" @signal="signal()" />
-		<SetNewPassword v-else />
+		<SetNewPassword v-else @pop="pop()" />
 	</div>
 </template>
 
@@ -12,12 +12,16 @@ import { BaseButton } from "../base/";
 
 import { ref, inject } from "vue";
 
-const page = ref(0);
+const page = ref(false);
 
 const studentNumber = ref("");
 const nationalId = ref("");
 
 const signal = () => {
 	page.value = true;
+};
+
+const pop = () => {
+	page.value = false;
 };
 </script>

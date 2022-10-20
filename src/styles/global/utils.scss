@@ -8,12 +8,12 @@
 
 .alert {
   padding: 8px;
-  border: 1px solid $color-dark;
+  border: 1px solid $color-dark-1;
   border-radius: 4px;
   margin-top: 18px;
   margin-bottom: 13px;
 
-  color: $color-dark-1;
+  color: $color-dark-2;
   width: 100%;
   font-size: 13px;
 
@@ -38,7 +38,7 @@
 
   outline: none;
   border: none;
-  color: $color-dark;
+  color: $color-dark-1;
   cursor: pointer;
   font-size: 24px;
   background-color: transparent;
@@ -68,6 +68,32 @@
   margin-top: 20px;
   padding: 15px 15px;
   background-color: red;
+}
+
+.pop-back {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: $color-grey-6;
+
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 13px;
+  }
+
+  span {
+    cursor: pointer;
+    font-size: 14px;
+    transition: $transition;
+
+    &:hover {
+      color: $color-dark-1;
+    }
+  }
 }
 
 @keyframes shake {

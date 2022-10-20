@@ -21,7 +21,7 @@ body {
   animation: opacity 1000ms linear 1;
 
   .logo-wrapper {
-    margin: 18px 0 18px 0px;
+    margin: 14px 0 18px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,40 +36,44 @@ body {
   position: relative;
   margin-bottom: 15px;
 
-  .signin-input {
-    width: 100%;
-    outline: none;
-    color: $color-dark-1;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    height: 50px;
-    padding: 0px 12px;
-    border: 2px solid $grey-aaa;
-    border-radius: 3px;
-    background-color: $color-white;
-    transition: border-color 250ms ease-in;
+  &.last-child {
+    margin-bottom: 11px;
+  }
+}
 
-    &::placeholder {
-      font-size: 15px;
-    }
+.signin-input {
+  width: 100%;
+  outline: none;
+  color: $color-dark-2;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  height: 50px;
+  padding: 0px 12px;
+  border: 1px solid $grey-aaa;
+  border-radius: 3px;
+  background-color: $color-white;
+  transition: border-color 250ms ease-in;
 
-    &:focus {
-      border-color: $color-blue;
-    }
-
-    &.error {
-      border: 2px solid red;
-    }
+  &::placeholder {
+    font-size: 15px;
   }
 
-  .eye-icon {
-    @include icon(50%, 13px);
-    color: $color-grey-6;
-    font-size: 20px;
+  &:focus {
+    border-color: $color-blue;
+  }
 
-    &:hover {
-      color: $color-dark-2;
-    }
+  &.error {
+    border: 2px solid red;
+  }
+}
+
+.eye-icon {
+  @include icon(50%, 13px);
+  color: $color-grey-6;
+  font-size: 20px;
+
+  &:hover {
+    color: $color-dark-3;
   }
 }
 
@@ -85,7 +89,7 @@ body {
   text-decoration: none;
 
   &:hover {
-    color: $color-dark-2;
+    color: $color-dark-3;
   }
 }
 
@@ -93,7 +97,7 @@ body {
   @extend .btn;
   display: block;
   width: 100%;
-  margin-top: 13px;
+  margin-top: 11px;
   margin-bottom: 0;
   padding: 0px 15px;
   height: 52px;
@@ -110,8 +114,9 @@ body {
 
 .create-account {
   @extend .forgot-password;
-  margin-top: 10px;
-  color: $color-dark-2;
+  margin-top: 8px;
+  color: $color-dark-3;
+  font-size: 15px;
 
   &:hover {
     text-decoration: underline;

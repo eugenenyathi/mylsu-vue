@@ -26,20 +26,31 @@
 			/>
 		</div>
 		<button class="signup-btn" :disabled="isLoading">Next</button>
+		<p class="pop-back">
+			<ButtonIcon iconName="fa-solid fa-chevron-left" />
+			<span @click="pop()">Go back</span>
+		</p>
 	</form>
 </template>
 
 <script setup>
-import { BaseButton } from "../base/";
+import { BaseButton, ButtonIcon } from "../base/";
 import useValidator from "../composables/useValidator.js";
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 
 const studentNumber = ref("L0202783T");
 const nationalId = ref("79-171724W21");
 const error = reactive({ studentNumber: false, nationalId: false });
 const isLoading = ref(false);
 const { validateStNumber, validateNationalID } = useValidator();
+
 const emit = defineEmits(["signal"]);
+const router = useRouter();
+
+const pop = () => {
+	router.push({ name: "Login" });
+};
 
 const handleSubmit = () => {
 	//validate inputs

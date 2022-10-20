@@ -16,7 +16,7 @@
 					@input="updateStNumber($event)"
 				/>
 			</div>
-			<div class="form-control">
+			<div class="form-control last-child">
 				<BaseInput
 					:type="pwdInputType"
 					:class="{
