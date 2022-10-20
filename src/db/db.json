@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "studentNumber": "L0202783T",
+      "jwt": "123456"
+    },
+    {
+      "id": 2,
+      "studentNumber": "L0204567W",
+      "jwt": "891552"
+    }
+  ]
+}

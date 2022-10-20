@@ -7,7 +7,7 @@ import ResetPassword from "../views/ResetPassword.vue";
 //composables
 import useRoute from "../composables/useRoute.js";
 
-const { protectHomeRoute } = useRoute();
+const { redirectRoute, protectHomeRoute } = useRoute();
 
 const routes = [
 	{
@@ -20,16 +20,19 @@ const routes = [
 		path: "/login",
 		component: Login,
 		name: "Login",
+		beforeEnter: redirectRoute,
 	},
 	{
 		path: "/signup",
 		component: Signup,
 		name: "Signup",
+		beforeEnter: redirectRoute,
 	},
 	{
 		path: "/reset-password",
 		component: ResetPassword,
 		name: "ResetPassword",
+		beforeEnter: redirectRoute,
 	},
 ];
 

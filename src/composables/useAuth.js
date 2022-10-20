@@ -3,7 +3,12 @@ import Cookies from "js-cookie";
 const useAuth = () => {
 	const setAuthUser = (user) => {
 		user = JSON.stringify(user);
-		Cookies.set("mylsu", user);
+		Cookies.set("mylsu", user, {
+			expires: 14,
+			path: "/",
+			domain: "localhost",
+			sameSite: "strict",
+		});
 	};
 
 	const getAuthUser = () => {
@@ -12,12 +17,13 @@ const useAuth = () => {
 	};
 
 	const deleteAuthUser = () => {
-		Cookies.remove("mylsu");
+		Cookies.remove("mylsu", { path: "/", domain: "localhost" });
 	};
 
 	return {
 		setAuthUser,
 		getAuthUser,
+		deleteAuthUser,
 	};
 };
 

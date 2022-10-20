@@ -9,7 +9,7 @@
 					:class="{
 						'signin-input': !error.stNumber,
 						'signin-input error shake':
-							error.stNumber || axiosError,
+							error.stNumber || error.axios,
 					}"
 					placeholder="Student Number"
 					:value="studentNumber"
@@ -22,7 +22,7 @@
 					:class="{
 						'signin-input': !error.password,
 						'signin-input error shake':
-							error.password || axiosError,
+							error.password || error.axios,
 					}"
 					placeholder="Password"
 					v-model="password"
@@ -79,18 +79,17 @@ import { useStore } from "vuex";
 //assets
 const logo = require("../assets/lupane.png");
 
-const studentNumber = ref("");
-const password = ref("");
+const studentNumber = ref("L0202783T");
+const password = ref("password123");
 const pwdInputType = ref("password");
 const showPassword = ref(false);
 
 const footerYear = getFooterYear();
 
-const error = reactive({ stNumber: false, password: false });
-const axiosError = ref(false);
+const error = reactive({ stNumber: false, password: false, axios: false });
 
 const { validateStNumber, validatePassword } = useValidator();
-const { isLoading, login } = useLogin(axiosError);
+const { isLoading, login } = useLogin(error);
 
 const updateStNumber = (event) => {
 	studentNumber.value = event.target.value.toUpperCase();
@@ -103,19 +102,15 @@ const togglePassword = () => {
 	else pwdInputType.value = "password";
 };
 
-const handleLogin = () => {
-	console.log("hello-world");
-
+const handleLogin = async () => {
 	if (!validateStNumber(studentNumber.value)) {
 		error.stNumber = true;
 	}
 	if (!validatePassword(password.value)) {
 		error.password = true;
-	} else {
-		console.log("Welcome to the planet");
 	}
 
 	//if there are no errors, well let's proceed!
-	// await login(studentNumber.value, password.value);
+	await login(studentNumber.value, password.value);
 };
 </script>

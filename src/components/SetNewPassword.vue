@@ -3,6 +3,7 @@
 		<h2 class="header set-password">Set new password</h2>
 		<div class="signup-control">
 			<BaseInput
+				:type="pwdType"
 				text="New Password"
 				class="signup-input"
 				v-model="password"
@@ -24,7 +25,7 @@
 
 		<p class="pop-back">
 			<ButtonIcon iconName="fa-solid fa-chevron-left" />
-			<span @click="pop()">Go back</span>
+			<router-link :to="{ name: 'Login' }">Go back</router-link>
 		</p>
 	</form>
 </template>
@@ -37,9 +38,13 @@ const emit = defineEmits(["pop"]);
 
 const showPassword = ref(false);
 const password = ref("");
+const pwdType = ref("password");
 
 const togglePassword = () => {
-	console.log("togglePassword");
+	showPassword.value = !showPassword.value;
+
+	if (pwdType.value === "password") pwdType.value = "text";
+	else pwdType.value = "password";
 };
 
 const pop = () => {

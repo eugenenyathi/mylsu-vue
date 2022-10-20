@@ -2,15 +2,15 @@
 	<template v-if="text">
 		<label>{{ text }}</label>
 		<input
-			:="$attrs"
 			type="text"
+			:="$attrs"
 			@input="$emit('update:modelValue', $event.target.value)"
 		/>
 	</template>
 	<template v-else>
 		<input
-			:="$attrs"
 			type="text"
+			:="$attrs"
 			@input="$emit('update:modelValue', $event.target.value)"
 		/>
 	</template>

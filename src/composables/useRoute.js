@@ -2,16 +2,21 @@ import useAuth from "./useAuth.js";
 
 const useRoute = () => {
 	const { getAuthUser } = useAuth();
+	const isAuthenticated = getAuthUser();
 
 	const protectHomeRoute = (to, from, next) => {
-		const isAuthenticated = getAuthUser();
-
 		if (isAuthenticated) next();
 		else next("/login");
 	};
 
+	const redirectRoute = (to, from, next) => {
+		if (isAuthenticated) next("/");
+		else next();
+	};
+
 	return {
 		protectHomeRoute,
+		redirectRoute,
 	};
 };
 

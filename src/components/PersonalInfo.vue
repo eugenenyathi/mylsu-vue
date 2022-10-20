@@ -7,7 +7,8 @@
 				type="text"
 				:class="{
 					'signup-input': !error.studentNumber,
-					'signup-input error shake': error.studentNumber,
+					'signup-input error shake':
+						error.studentNumber || error.axios,
 				}"
 				id="studentNumber"
 				v-model="studentNumber"
@@ -19,7 +20,7 @@
 				type="text"
 				:class="{
 					'signup-input': !error.nationalId,
-					'signup-input error shake': error.nationalId,
+					'signup-input error shake': error.nationalId || error.axios,
 				}"
 				id="nationalId"
 				v-model="nationalId"
@@ -28,7 +29,7 @@
 		<button class="signup-btn" :disabled="isLoading">Next</button>
 		<p class="pop-back">
 			<ButtonIcon iconName="fa-solid fa-chevron-left" />
-			<span @click="pop()">Go back</span>
+			<router-link :to="{ name: 'Login' }">Go back</router-link>
 		</p>
 	</form>
 </template>
@@ -36,23 +37,24 @@
 <script setup>
 import { BaseButton, ButtonIcon } from "../base/";
 import useValidator from "../composables/useValidator.js";
+import useSignup from "../composables/useSignup.js";
+
 import { ref, reactive } from "vue";
-import { useRouter } from "vue-router";
 
 const studentNumber = ref("L0202783T");
 const nationalId = ref("79-171724W21");
-const error = reactive({ studentNumber: false, nationalId: false });
-const isLoading = ref(false);
+const error = reactive({
+	studentNumber: false,
+	nationalId: false,
+	axios: false,
+});
 const { validateStNumber, validateNationalID } = useValidator();
+const { isLoading, verifyIdentity } = useSignup(error);
 
 const emit = defineEmits(["signal"]);
 const router = useRouter();
 
-const pop = () => {
-	router.push({ name: "Login" });
-};
-
-const handleSubmit = () => {
+const handleSubmit = async () => {
 	//validate inputs
 	if (!validateStNumber(studentNumber.value)) {
 		error.studentNumber = true;
@@ -65,10 +67,8 @@ const handleSubmit = () => {
 	}
 
 	//send the data to the backend
-	console.log("Let's Go");
-
-	//send event to parent element only if
-	//the user details are valid
-	emit("signal");
+	// await verifyIdentity(studentNumber.value, nationalId.value);
+	//send event to parent element only if there are no errors
+	if (!error.axios) emit("signal");
 };
 </script>
