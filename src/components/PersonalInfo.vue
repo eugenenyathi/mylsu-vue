@@ -1,5 +1,6 @@
 <template>
-	<form @submit.prevent="handleSubmit" class="signup-form">
+	<form class="signup-form personal-info" @submit.prevent="handleSubmit">
+		<h2 class="header">Hello, Signup here!</h2>
 		<div class="signup-control">
 			<label for="studentNumber">Student Number</label>
 			<input
@@ -38,6 +39,7 @@ const nationalId = ref("79-171724W21");
 const error = reactive({ studentNumber: false, nationalId: false });
 const isLoading = ref(false);
 const { validateStNumber, validateNationalID } = useValidator();
+const emit = defineEmits(["signal"]);
 
 const handleSubmit = () => {
 	//validate inputs
@@ -50,5 +52,12 @@ const handleSubmit = () => {
 		error.nationalId = true;
 		console.log("error -nat");
 	}
+
+	//send the data to the backend
+	console.log("Let's Go");
+
+	//send event to parent element only if
+	//the user details are valid
+	emit("signal");
 };
 </script>
