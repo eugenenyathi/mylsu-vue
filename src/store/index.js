@@ -17,11 +17,17 @@ const store = createStore({
 		login(state, payload) {
 			state.user = payload;
 		},
+		logout(state, payload) {
+			state.user = null;
+		},
 	},
 
 	actions: {
 		login(context, payload) {
-			context.commit("setUser", payload);
+			context.commit("login", payload);
+		},
+		logout(context) {
+			context.commit("logout");
 		},
 	},
 });

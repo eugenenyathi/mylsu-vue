@@ -1,6 +1,10 @@
 <template>
 	<div class="signup-container">
-		<PersonalInfo v-if="!page" @signal="signal()" />
+		<PersonalInfo
+			v-if="!page"
+			@signal="signal()"
+			header="Hello, Signup here!"
+		/>
 		<SetNewPassword v-else @pop="pop()" />
 	</div>
 </template>

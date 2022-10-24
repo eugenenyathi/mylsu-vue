@@ -8,7 +8,13 @@ const useAxiosError = (err, error, isLoading) => {
 	} = err;
 
 	// error.axiosError = data.error || data.err;
-	error.axios = err.response.statusText;
+
+	if (error.axios) {
+		error.axios = err.response.statusText;
+	} else {
+		error.msg = err.response.statusText;
+	}
+
 	isLoading.value = false;
 };
 

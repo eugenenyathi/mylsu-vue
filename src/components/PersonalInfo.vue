@@ -1,6 +1,6 @@
 <template>
 	<form class="signup-form personal-info" @submit.prevent="handleSubmit">
-		<h2 class="header">Hello, Signup here!</h2>
+		<h2 class="header">{{ header }}</h2>
 		<div class="signup-control">
 			<label for="studentNumber">Student Number</label>
 			<input
@@ -41,6 +41,7 @@ import useSignup from "../composables/useSignup.js";
 
 import { ref, reactive } from "vue";
 
+const props = defineProps({ header: String });
 const studentNumber = ref("L0202783T");
 const nationalId = ref("79-171724W21");
 const error = reactive({
@@ -52,7 +53,6 @@ const { validateStNumber, validateNationalID } = useValidator();
 const { isLoading, verifyIdentity } = useSignup(error);
 
 const emit = defineEmits(["signal"]);
-const router = useRouter();
 
 const handleSubmit = async () => {
 	//validate inputs

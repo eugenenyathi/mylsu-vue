@@ -28,8 +28,6 @@ const useLogin = (error) => {
 			//update global state
 			store.dispatch("login", user);
 
-			isLoading.value = false;
-
 			//redirect to homepage
 			router.push({
 				name: "Home",
